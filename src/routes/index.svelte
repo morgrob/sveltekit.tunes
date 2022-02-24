@@ -1,59 +1,19 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
-	import Counter from '$lib/Counter.svelte';
-</script>
+  import {goto} from '$app/navigation';
 
-<svelte:head>
-	<title>Home</title>
-</svelte:head>
+  var searched = '';
+  const search = () => {
+    goto(`${searched}`)
+  }
+</script>
 
 <section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
+  <div class="flex flex-col items-center justify-center">
+    <div class="text-5xl text-center text-white font-semibold mb-12">Search an artist</div>
+    <div class="w-full flex rounded-md bg-white bg-opacity-20 p-1 border border-white border-opacity-30">
+      <input class="w-4/5 bg-transparent text-white" type="text" bind:value={searched}>
+      <button class="w-1/5 p-2 rounded-md bg-white font-medium" on:click={search}>Search</button>
+    </div>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
+  </div>
 </section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>

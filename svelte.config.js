@@ -1,14 +1,11 @@
-import adapter from '@sveltejs/adapter-auto';
-
 /** @type {import('@sveltejs/kit').Config} */
+import vercel from '@sveltejs/adapter-vercel';
+
 const config = {
 	kit: {
-		adapter: adapter(),
-
-		// Override http methods in the Todo forms
-		methodOverride: {
-			allowed: ['PATCH', 'DELETE']
-		}
+		// hydrate the <div id="svelte"> element in src/app.html
+		target: '#svelte',
+		adapter: vercel()
 	}
 };
 
