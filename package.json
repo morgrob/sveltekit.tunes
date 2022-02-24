@@ -22,6 +22,7 @@
   },
   "type": "module",
   "dependencies": {
+    "gh-pages": "^3.2.3",
     "semver": "^7.3.5"
   }
 }
